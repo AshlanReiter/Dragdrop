@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en-us" >
+<head>
+  <meta name="viewport" 
+    content="width=device-width, 
+    initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="images.jpeg">
+  <title>Drag n Drop</title>
+  <style>
+  .h {
+    width:100%;
+    margin-left:5px;
+    margin-right:5px;
+    margin-bottom:5px;
+    border:1px solid black;
+    height:150px;
+  }
+  .b {
+    display:flex;
+  }
+  img {
+    margin-left:5px;
+    margin-right:5px;
+    height:140px;
+  }
+  .g {
+    margin-left:35px;
+  }
+  .j {
+    margin-left:20px;
+  }
+  </style>
+  <script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+} 
+  </script>
+</head>
+<body>
+  <div class="b">
+  <div class="h" ondrop="drop(event)"
+    ondragover="allowDrop(event)"></div>
+  <div class="h" ondrop="drop(event)"
+    ondragover="allowDrop(event)"></div>
+  </div>
+  <div class="b">
+  <div class="h" ondrop="drop(event)"
+    ondragover="allowDrop(event)"></div>
+  <div class="h" ondrop="drop(event)"
+    ondragover="allowDrop(event)"></div>
+  </div>
+  <div class="b">
+    <img src="images.jpeg" width="40%"
+      class="j" draggable="true"
+      ondragstart="drag(event)">
+    <img src="haha.gif" width="40%"
+      class="g" draggable="true"
+      ondragstart="drag(event)">
+  </div>
+</body>
+</html>
